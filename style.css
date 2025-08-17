@@ -33,6 +33,26 @@ main {
   padding: 0 20px;
 }
 
+section {
+  margin-bottom: 30px;
+}
+
+h2 {
+  color: #4CAF50;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  background: #e0f7e9;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 8px;
+}
+
 footer {
   text-align: center;
   padding: 15px;
