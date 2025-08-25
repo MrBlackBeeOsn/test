@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+ <style>
+   body {
+     font-family: Arial, Helvetica, sans-serif;
+     color: blue
+   }
+
+   form {
+     font-family: Arial;
+     Color: black; // Change Daily News text color
+   }
+
+   .container {
+     padding: 15px;
+     background-color: transparent;
+   }
+
+   input[type=text],
+   input[type=submit] {
+     width: 100%;
+     padding: 12px;
+     margin: 8px 0;
+     display: inline-block;
+     border: 1px solid;
+     color: black; // Change text box color and button text color
+   }
+
+   input[type=checkbox] {
+     margin-top: 16px;
+     color: red;
+   }
+
+   input[type=submit] {
+     background-color: #FD6D2F; // Change button color
+     color: black;
+     border: none;
+   }
+
+   input[type=submit]:hover {
+     opacity: 0.8;
+   }
+ </style>
+ <body>            <!Change SheetDB link to yours>
+   <form action="https://sheetdb.io/api/v1/uchgggghtyrjgddghg" method="post" id='sheetdb-form'>
+     <div class="container">
+       <div class="container" style="background-color:transparent">
+
+<!Change the data tags if you are not using name or email>
+         <input type="text" placeholder="Full Name" name="data[name]" required> 
+         <input type="text" placeholder="Email address" name="data[email]" required>
+         <label>
+           <input type="checkbox" style="background-color:transparent" checked="checked" name="subscribe"> Daily Newsletter </label>
+       </div>
+       <div class="container">
+         <input type="submit" value="Subscribe">
+       </div>
+   </form>
+   <script>
+     var form = document.getElementById('sheetdb-form');
+     form.addEventListener("submit", e => {
+       e.preventDefault();
+       fetch(form.action, {
+         method: "POST",
+         body: new FormData(document.getElementById("sheetdb-form")),
+       }).then(response => response.json()).then((html) => {
+        // Add your redirect link or javascript here
+         window.open('https://changethislink.com', '_blank');
+       });
+     });
+   </script>
+ </body>
+</html>
