@@ -54,56 +54,6 @@
             display: flex;
             align-items: center;
         }
-
-        /* Back to Top Button */
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #86D731; /* Màu xanh lá cây shamrock */
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            font-size: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            opacity: 0;
-            /*visibility: hidden;*/
-            transition: opacity 0.3s, visibility 0.3s;
-            background-size: cover;
-        }
-
-        .back-to-top.show {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .back-to-top:hover {
-            background-color: #79C029; /* Màu tối hơn khi hover */
-        }
-
-        /* Responsive */
-        @media screen and (max-width: 768px) {
-            header {
-                flex-direction: column;
-                justify-content: center;
-                text-align: center;
-            }
-            .logo-container {
-                justify-content: center;
-            }
-            .back-to-top {
-                width: 40px;
-                height: 40px;
-                font-size: 20px;
-                bottom: 15px;
-                right: 15px;
-            }
-        }
     </style>
 </head>
 <body>
@@ -136,32 +86,6 @@
       </ul>
     </section>
   </main>
-
-    <a href="/Backtotop/backtotop.html">Back to top</a>
-    
-    <button class="back-to-top" title="Quay lại đầu trang">↑</button>
-
-    <!-- JavaScript -->
-    <script>
-        const backToTopButton = document.querySelector('.back-to-top');
-
-        // Hiển thị/ẩn nút khi cuộn
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) { // Hiển thị nút khi cuộn xuống 300px
-                backToTopButton.classList.add('show');
-            } else {
-                backToTopButton.classList.remove('show');
-            }
-        });
-
-        // Cuộn mượt về đầu trang
-        backToTopButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    </script>
     
   <footer>
     <p>© 2025 - Demo HTML & CSS</p>
