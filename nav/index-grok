@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Back to Top</title>
+    <title>Nav với Hiệu ứng Thu Nhỏ và Highlight Bo Tròn</title>
     <style>
         /* Header và Logo */
         .logo-container {
@@ -12,10 +12,10 @@
         }
 
         .shamrock {
-            color: #86D731; /* Màu xanh lá cây từ yêu cầu */
+            color: #86D731; /* Màu shamrock */
             font-size: 24px;
-            margin-right: 10px;
             font-family: 'Arial', 'Segoe UI Emoji', sans-serif;
+            margin-right: 10px;
         }
 
         .logo {
@@ -30,15 +30,49 @@
             background-color: #f8f8f8;
         }
 
+        /* Nav */
         nav {
             display: flex;
             gap: 20px;
+            align-items: center;
         }
 
         nav a {
             text-decoration: none;
             color: #333;
             font-weight: bold;
+            position: relative;
+            padding: 8px 12px;
+            transition: transform 0.2s ease, color 0.3s ease;
+        }
+
+        /* Hiệu ứng thu nhỏ khi nhấp và giữ */
+        nav a:active {
+            transform: scale(0.9); /* Thu nhỏ 90% */
+        }
+
+        /* Highlight bo tròn giống <mark> khi hover */
+        nav a::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background-color: rgba(134, 215, 49, 0.5); /* #86D731 với opacity giống <mark> */
+            border-radius: 10px; /* Bo tròn góc */
+            transform: translate(-50%, -50%);
+            transition: width 0.3s ease, height 0.3s ease;
+            z-index: -1;
+        }
+
+        nav a:hover::before {
+            width: 100%; /* Bao quanh chữ */
+            height: 100%;
+        }
+
+        nav a:hover {
+            color: #86D731; /* Đổi màu chữ khi hover */
         }
 
         /* Quote */
@@ -53,12 +87,12 @@
             align-items: center;
         }
 
-        /* Back to Top Button */
+        /* Back to Top */
         .back-to-top {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: #86D731; /* Màu xanh lá cây shamrock */
+            background-color: #86D731;
             color: white;
             border: none;
             border-radius: 50%;
@@ -70,9 +104,8 @@
             justify-content: center;
             cursor: pointer;
             opacity: 0;
-            /*visibility: hidden;*/
+            visibility: hidden;
             transition: opacity 0.3s, visibility 0.3s;
-            background-size: cover;
         }
 
         .back-to-top.show {
@@ -81,7 +114,7 @@
         }
 
         .back-to-top:hover {
-            background-color: #79C029; /* Màu tối hơn khi hover */
+            background-color: #79C029;
         }
 
         /* Responsive */
@@ -93,6 +126,13 @@
             }
             .logo-container {
                 justify-content: center;
+            }
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+            nav a::before {
+                display: none; /* Ẩn highlight bo tròn trên mobile */
             }
             .back-to-top {
                 width: 40px;
@@ -112,9 +152,9 @@
             <a href="/"><img src="images/logo.png" alt="Logo của trang web" class="logo"></a>
         </div>
         <nav>
-            <a href="#home">Trang chủ</a>
-            <a href="#about">Giới thiệu</a>
-            <a href="#contact">Liên hệ</a>
+            <a href="#home" aria-label="Đi đến trang chủ">Trang chủ</a>
+            <a href="#about" aria-label="Đi đến giới thiệu">Giới thiệu</a>
+            <a href="#contact" aria-label="Đi đến liên hệ">Liên hệ</a>
         </nav>
     </header>
 
@@ -128,23 +168,20 @@
     </div>
 
     <!-- Nút Back to Top -->
-
-    <button class="back-to-top" title="Quay lại đầu trang">↑</button>
+    <button class="back-to-top" title="Quay lại đầu trang" aria-label="Quay lại đầu trang">↑</button>
 
     <!-- JavaScript -->
     <script>
+        // Back to Top
         const backToTopButton = document.querySelector('.back-to-top');
-
-        // Hiển thị/ẩn nút khi cuộn
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) { // Hiển thị nút khi cuộn xuống 300px
+            if (window.scrollY > 300) {
                 backToTopButton.classList.add('show');
             } else {
                 backToTopButton.classList.remove('show');
             }
         });
 
-        // Cuộn mượt về đầu trang
         backToTopButton.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
