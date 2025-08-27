@@ -1,0 +1,44 @@
+<p>
+  Rê chuột vào <span id="myElement">đây</span> để xem ghi chú động.
+</p>
+
+<style>
+
+.tooltip-js {
+  /* Style tương tự như giải pháp CSS ở trên */
+  background-color: #333;
+  color: white;
+  /* ... */
+}
+
+</style>
+
+    <p>Thêm các sự kiện mouseover và mouseout để tạo và xóa ghi chú.</p>
+
+<script>
+
+    const element = document.getElementById('myElement');
+    let tooltip;
+
+    element.addEventListener('mouseover', () => {
+    // Tạo một phần tử ghi chú
+    tooltip = document.createElement('div');
+    tooltip.textContent = 'Ghi chú này được tạo bằng JS!';
+    tooltip.className = 'tooltip-js';
+    
+    // Thêm ghi chú vào body
+    document.body.appendChild(tooltip);
+
+    // Đặt vị trí ghi chú
+    const rect = element.getBoundingClientRect();
+    tooltip.style.top = `${rect.top + window.scrollY - tooltip.offsetHeight - 10}px`;
+    tooltip.style.left = `${rect.left + window.scrollX + (rect.width / 2) - (tooltip.offsetWidth / 2)}px`;
+    });
+
+    element.addEventListener('mouseout', () => {
+    if (tooltip) {
+        tooltip.remove();
+    }
+    });
+
+</script>

@@ -1,0 +1,47 @@
+<p>
+  Rê chuột vào <span title="Đây là ghi chú của từ này.">đây</span> để xem ghi chú.
+</p>
+
+<a href="#">
+  <img src="anh.jpg" alt="Một bức ảnh đẹp" title="Đây là ghi chú cho bức ảnh." />
+</a
+
+<p>
+  Rê chuột vào <span class="tooltip" data-tooltip="Đây là ghi chú của từ này.">đây</span>.
+</p>
+
+
+
+<style>
+    .tooltip {
+  position: relative; /* Quan trọng: làm điểm neo */
+  cursor: pointer;
+}
+
+.tooltip::after {
+    content: attr(data-tooltip); /* Lấy nội dung từ thuộc tính data-tooltip */
+    position: absolute;
+    bottom: 120%; /* Đặt ghi chú phía trên */
+    left: 50%;
+    transform: translateX(-50%);
+
+    /* Style cho ghi chú */
+    background-color: #333;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    white-space: nowrap; /* Ngăn không cho văn bản xuống dòng */
+    font-size: 14px;
+
+    /* Ẩn ban đầu */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 999;
+    }
+
+    .tooltip:hover::after {
+    opacity: 1;
+    visibility: visible;
+    }
+</style>
