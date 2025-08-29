@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hành Trình Blog Của Tôi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f2f5;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 700px;
+            width: 100%;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1a202c;
+            margin-bottom: 30px;
+        }
+        .year-section {
+            margin-bottom: 20px;
+        }
+        .year-header {
+            font-size: 1.8rem;
+            color: #2b6cb0;
+            padding: 10px;
+            border-radius: 5px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            cursor: pointer;
+        }
+        .year-header:hover {
+            transform: scale(1.03);
+            background-color: #edf2f7;
+        }
+        .content {
+            padding-left: 20px;
+            margin-top: 10px;
+            transition: max-height 0.3s ease, opacity 0.3s ease;
+            max-height: 500px;
+            opacity: 1;
+        }
+        .content-hidden {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        .content li {
+            font-size: 1rem;
+            color: #4a5568;
+            margin: 10px 0;
+            list-style: none;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            .year-header {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hành Trình Blog Của Tôi</h1>
+        
+        <div class="year-section">
+            <h2 class="year-header" onclick="toggleContent('2025')">2025</h2>
+            <ul id="2025" class="content content-hidden">
+                <li>Tháng 1: Cập nhật nội dung</li>
+            </ul>
+        </div>
+        
+        <div class="year-section">
+            <h2 class="year-header" onclick="toggleContent('2026')">2026</h2>
+            <ul id="2026" class="content content-hidden">
+                <li>Tháng 1: Cập nhật nội dung</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function toggleContent(year) {
+            const content = document.getElementById(year);
+            content.classList.toggle('content-hidden');
+        }
+    </script>
+</body>
+</html>

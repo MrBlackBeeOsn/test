@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog Journey</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .content-hidden {
+            display: none;
+        }
+        .year-header {
+            transition: all 0.3s ease;
+        }
+        .year-header:hover {
+            transform: scale(1.05);
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center justify-center p-6">
+    <div class="max-w-2xl w-full bg-white shadow-lg rounded-lg p-8">
+        <h1 class="text-4xl font-bold text-center text-gray-800 mb-8">My Blog Journey</h1>
+        
+        <div class="year-section mb-6">
+            <h2 class="year-header text-2xl font-semibold text-blue-600 mb-2" onclick="toggleContent('2025')">2025</h2>
+            <ul id="2025" class="content pl-4 space-y-2">
+                <li class="text-gray-700">January: Updated content</li>
+            </ul>
+        </div>
+        
+        <div class="year-section">
+            <h2 class="year-header text-2xl font-semibold text-blue-600 mb-2" onclick="toggleContent('2026')">2026</h2>
+            <ul id="2026" class="content pl-4 space-y-2">
+                <li class="text-gray-700">January: Updated content</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function toggleContent(year) {
+            const content = document.getElementById(year);
+            content.classList.toggle('content-hidden');
+        }
+    </script>
+</body>
+</html>

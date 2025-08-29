@@ -16,10 +16,28 @@
             color: #333;
             background-color: #f8f9fa;
         }
-        .blog-header {...}
-        .blog-title {...}
-        .blog-description {...}
-        .timeline {...}
+        .blog-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #eee;
+        }
+        .blog-title {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin: 0;
+            color: #2c3e50;
+        }
+        .blog-description {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        .timeline {
+            background: #fff;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
         .year {
             color: #e74c3c;
             border-bottom: 1px solid #ecf0f1;
@@ -33,13 +51,27 @@
         .year::after {
             content: "−"; /* Dấu "trừ" (-) thể hiện đang mở rộng */
             font-size: 1.5rem;
+            text-align: center;
         }
         .year.collapsed::after {
             content: "+"; /* Dấu "cộng" (+) thể hiện đang thu gọn */
+            text-align: center;
         }
-        .month-list {...}
-        .month-list li {...}
-        .month {...}
+        .month-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .month-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed #ecf0f1;
+        }
+        .month-list li:last-child {
+            border-bottom: none;
+        }
+        .month {
+            font-weight: 600;
+            color: #3498db;
+        }
     </style>
 </head>
 <body>
