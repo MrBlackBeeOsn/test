@@ -62,7 +62,7 @@
 
         /* Thêm dấu "+" hoặc "-" bên cạnh năm */
         .year::after {
-            content: "−"; /* Dấu "trừ" mặc định (nội dung đang hiển thị) */
+            content: "-"; /* Dấu "trừ" mặc định (nội dung đang hiển thị) */
             font-size: 1.8rem;
             color: #95a5a6;
         }
@@ -74,13 +74,17 @@
 
         /* Ẩn danh sách tháng của các năm bị thu gọn */
         .year.collapsed + .month-list {
+            /* display: block; */
             display: none;
+            
         }
 
         .month-list {
             list-style-type: none;
             padding-left: 0;
             margin-top: 1rem;
+            /* display: none; */
+
         }
 
         .month-list li {
