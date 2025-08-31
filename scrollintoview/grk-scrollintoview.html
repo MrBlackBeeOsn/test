@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Trang Web Của Tôi</title>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Trang chủ</a>
+        <a href="about.html">Giới thiệu</a>
+        <a href="contact.html">Liên hệ</a>
+        <a href="#content-section">Cuộn đến nội dung</a>
+    </nav>
+
+    <div>
+        ☘
+        Đây là một câu trích dẫn mẫu với biểu tượng shamrock.
+    </div>
+
+    <div id="content-section">
+        Nội dung dài để kiểm tra cuộn...
+    </div>
+
+    <a href="#">↑</a>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

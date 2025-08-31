@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mục Lục Đẹp</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 900px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 25px 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+        
+        .header p {
+            opacity: 0.9;
+        }
+        
+        .toc-container {
+            padding: 25px;
+        }
+        
+        .toc-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        
+        .toc-title i {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+        
+        .toc-list {
+            list-style-type: none;
+        }
+        
+        .toc-item {
+            padding: 15px 20px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            border-left: 4px solid #6a11cb;
+        }
+        
+        .toc-item:hover {
+            background: #eef2ff;
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(106, 17, 203, 0.1);
+        }
+        
+        .toc-number {
+            font-weight: bold;
+            color: #6a11cb;
+            margin-right: 15px;
+            font-size: 18px;
+            min-width: 30px;
+            text-align: center;
+        }
+        
+        .toc-content {
+            flex: 1;
+        }
+        
+        .toc-content h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: #2c3e50;
+        }
+        
+        .toc-content p {
+            color: #7f8c8d;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .toc-icon {
+            color: #6a11cb;
+            font-size: 20px;
+        }
+        
+        .toc-pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .toc-pagination span {
+            display: inline-block;
+            padding: 8px 16px;
+            margin: 0 5px;
+            border-radius: 5px;
+            background: #f1f3f5;
+            color: #6a11cb;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .toc-pagination span.active {
+            background: #6a11cb;
+            color: white;
+        }
+        
+        .toc-pagination span:hover:not(.active) {
+            background: #e0e0e0;
+        }
+        
+        @media (max-width: 768px) {
+            .toc-item {
+                padding: 12px 15px;
+            }
+            
+            .toc-content h3 {
+                font-size: 16px;
+            }
+            
+            .toc-content p {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>MỤC LỤC NỘI DUNG</h1>
+            <p>Khám phá các chương và nội dung hấp dẫn</p>
+        </div>
+        
+        <div class="toc-container">
+            <div class="toc-title">
+                <i class="fas fa-list-ul"></i>
+                <h2>Danh sách các chương</h2>
+            </div>
+            
+            <ul class="toc-list">
+                <li class="toc-item">
+                    <span class="toc-number">01</span>
+                    <div class="toc-content">
+                        <h3>Giới thiệu tổng quan</h3>
+                        <p>Tổng quan về nội dung, mục tiêu và phương pháp nghiên cứu</p>
+                    </div>
+                    <i class="toc-icon fas fa-book-open"></i>
+                </li>
+                
+                <li class="toc-item">
+                    <span class="toc-number">02</span>
+                    <div class="toc-content">
+                        <h3>Cơ sở lý thuyết</h3>
+                        <p>Các khái niệm cơ bản, lý thuyết nền tảng và mô hình nghiên cứu</p>
+                    </div>
+                    <i class="toc-icon fas fa-graduation-cap"></i>
+                </li>
+                
+                <li class="toc-item">
+                    <span class="toc-number">03</span>
+                    <div class="toc-content">
+                        <h3>Phương pháp nghiên cứu</h3>
+                        <p>Thiết kế nghiên cứu, quy trình thu thập và phân tích dữ liệu</p>
+                    </div>
+                    <i class="toc-icon fas fa-flask"></i>
+                </li>
+                
+                <li class="toc-item">
+                    <span class="toc-number">04</span>
+                    <div class="toc-content">
+                        <h3>Kết quả nghiên cứu</h3>
+                        <p>Phân tích dữ liệu, kết quả định tính và định lượng</p>
+                    </div>
+                    <i class="toc-icon fas fa-chart-bar"></i>
+                </li>
+                
+                <li class="toc-item">
+                    <span class="toc-number">05</span>
+                    <div class="toc-content">
+                        <h3>Thảo luận và đánh giá</h3>
+                        <p>Giải thích kết quả, so sánh với các nghiên cứu trước đây</p>
+                    </div>
+                    <i class="toc-icon fas fa-comments"></i>
+                </li>
+                
+                <li class="toc-item">
+                    <span class="toc-number">06</span>
+                    <div class="toc-content">
+                        <h3>Kết luận và kiến nghị</h3>
+                        <p>Tóm tắt kết quả, hạn chế của nghiên cứu và hướng phát triển</p>
+                    </div>
+                    <i class="toc-icon fas fa-flag-checkered"></i>
+                </li>
+            </ul>
+            
+            <div class="toc-pagination">
+                <span class="active">1</span>
+                <span>2</span>
+                <span>3</span>
+                <span><i class="fas fa-chevron-right"></i></span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Hiệu ứng hover cho các mục
+        document.querySelectorAll('.toc-item').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.style.transform = 'translateX(8px)';
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'translateX(0)';
+            });
+        });
+        
+        // Chuyển trang đơn giản
+        document.querySelectorAll('.toc-pagination span').forEach(page => {
+            page.addEventListener('click', () => {
+                document.querySelector('.toc-pagination span.active').classList.remove('active');
+                page.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

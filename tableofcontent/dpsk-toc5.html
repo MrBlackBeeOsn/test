@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Blog Table of Contents</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f0f1a 0%, #1e1e2f 100%);
+            color: #e6e6ff;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 900px;
+            background: rgba(25, 25, 40, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #00d9ff 0%, #b300ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+        }
+        
+        .subtitle {
+            color: #a0a0c0;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+        
+        .toc-list {
+            list-style: none;
+            counter-reset: toc-counter;
+        }
+        
+        .toc-item {
+            counter-increment: toc-counter;
+            padding: 25px 30px;
+            margin-bottom: 20px;
+            background: rgba(35, 35, 55, 0.6);
+            border-radius: 16px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+        }
+        
+        .toc-item::before {
+            content: counter(toc-counter);
+            position: absolute;
+            left: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 6rem;
+            font-weight: 800;
+            color: rgba(0, 217, 255, 0.05);
+            z-index: 0;
+        }
+        
+        .toc-item:hover {
+            background: rgba(45, 45, 65, 0.8);
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            border-color: rgba(0, 217, 255, 0.2);
+        }
+        
+        .toc-content {
+            flex: 1;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .toc-link {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 1.3rem;
+            display: block;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .toc-link:hover {
+            color: #00d9ff;
+        }
+        
+        .toc-link::before {
+            content: "#";
+            margin-right: 10px;
+            color: #b300ff;
+            font-weight: 700;
+        }
+        
+        .toc-excerpt {
+            color: #a0a0c0;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .toc-meta {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .toc-meta-item {
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+            color: #8080a0;
+        }
+        
+        .toc-meta-item i {
+            margin-right: 8px;
+            font-size: 1rem;
+            color: #00d9ff;
+        }
+        
+        .toc-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 15px;
+        }
+        
+        .badge-popular {
+            background: linear-gradient(135deg, #ff00aa 0%, #ff0066 100%);
+            color: white;
+        }
+        
+        .badge-new {
+            background: linear-gradient(135deg, #00d9ff 0%, #0088ff 100%);
+            color: white;
+        }
+        
+        .badge-trending {
+            background: linear-gradient(135deg, #ffcc00 0%, #ff6600 100%);
+            color: white;
+        }
+        
+        .toc-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-left: 20px;
+            position: relative;
+            z-index: 2;
+            flex-shrink: 0;
+            background: linear-gradient(135deg, #2a2a4a 0%, #1a1a2a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #00d9ff;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #8080a0;
+            font-size: 0.9rem;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px;
+            }
+            
+            .title {
+                font-size: 2.2rem;
+            }
+            
+            .toc-item {
+                padding: 20px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .toc-image {
+                margin-left: 0;
+                margin-top: 15px;
+                width: 100%;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+            
+            .toc-link {
+                font-size: 1.1rem;
+            }
+            
+            .toc-item::before {
+                font-size: 4rem;
+                left: -10px;
+            }
+        }
+        
+        /* Hiệu ứng ánh sáng */
+        .light-effect {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(0, 217, 255, 0.1) 0%, rgba(0, 217, 255, 0) 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        .light-1 {
+            top: -100px;
+            right: -100px;
+        }
+        
+        .light-2 {
+            bottom: -100px;
+            left: -100px;
+            background: radial-gradient(circle, rgba(179, 0, 255, 0.1) 0%, rgba(179, 0, 255, 0) 70%);
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .toc-item {
+            animation: fadeIn 0.6s ease forwards;
+            opacity: 0;
+        }
+        
+        .toc-item:nth-child(1) { animation-delay: 0.1s; }
+        .toc-item:nth-child(2) { animation-delay: 0.2s; }
+        .toc-item:nth-child(3) { animation-delay: 0.3s; }
+        .toc-item:nth-child(4) { animation-delay: 0.4s; }
+        .toc-item:nth-child(5) { animation-delay: 0.5s; }
+        .toc-item:nth-child(6) { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <div class="light-effect light-1"></div>
+    <div class="light-effect light-2"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1 class="title">NỘI DUNG NỔI BẬT</h1>
+            <p class="subtitle">Khám phá những bài viết mới nhất và được quan tâm nhiều nhất</p>
+        </div>
+        
+        <ul class="toc-list">
+            <li class="toc-item">
+                <div class="toc-content">
+                    <a href="#" class="toc-link">
+                        JavaScript Hiện Đại 2023
+                        <span class="toc-badge badge-new">MỚI</span>
+                    </a>
+                    <p class="toc-excerpt">Khám phá những tính năng mới nhất trong JavaScript và cách áp dụng chúng vào dự án thực tế của bạn.</p>
+                    <div class="toc-meta">
+                        <div class="toc-meta-item">
+                            <i class="far fa-clock"></i>
+                            <span>12 phút đọc</span>
+                        </div>
+                        <div class="toc-meta-item">
+                            <i class="far fa-calendar"></i>
+                            <span>20/08/2023</span>
+                        </div>
+                        <div class="toc-meta-item">
+                            <i class="far fa-eye"></i>
+                            <span>2.4K lượt xem</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="toc-image">
+                    <i class="fab fa-js"></i>
+                </div>
+            </li>
+            
+            <li class="toc-item">
+                <div class="toc-content">
+                    <a href="#" class="toc-link">
+                        React vs Vue 2023
+                        <span class="toc-badge badge-trending">XU HƯỚNG</span>
+                    </a>
+                    <p class="toc-excerpt">So sánh chi tiết giữa hai framework phổ biến nhất hiện nay và giúp bạn lựa chọn công nghệ phù hợp.</p>
+                    <div class="toc-meta">
+                        <div class="toc-meta-item">
+                            <i class="far fa-clock"></i>
+                            <span>15 phút đọc</span>
+                        </div>
+                        <div class="toc-meta-item">
+                            <i class="far fa-calendar"></i>
+                            <span>18/08/2023</span>
+                        </div>
+                        <div class="toc-meta-item">
+                            <i class="far fa-eye"></i>
+                            <span>3.8K lượt xem</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="toc-image">
+                    <i class="fas fa-code-branch"></i>
+                </div>
+            </li>
+            
+            <li class="toc-item">
+                <div class="toc-content">
+                    <a href="#" class="toc-link">
+                        Thiết kế UI/UX hiện đại
+                        <span class="toc-badge badge-popular">PHỔ BIẾN</span>
+                    </a>
+                    <p class="toc-excerpt">Những nguyên tắc thiết kế hiện đại giúp tạo ra trải nghiệm người dùng tuyệt vời cho sản phẩm của bạn.</p>
+                    <div class="toc-meta">
+                        <div class="toc-meta-item">
+                            <i class="far fa-clock"></i>
+                            <span>10 phút đọc</span>
+                        </div>
+                        <div class="toc-meta-item">
+                            <i class="far fa-calendar"></i>
+                            <span>15/08/2023</span>
+                        </div>
+                        <div class="toc-meta-item">
+                            <i class="far fa-eye"></i>
+                            <span>5.2K lượt xem</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="toc-image">
+                    <i class="fas fa-paint-brush"></i>
+                </div>
+            </li>
+            
+            <li class="toc-item">
+                <div class="toc-content">
+                    <a href="#" class="toc-link">
+                        Python cho Data Science
+                    </a>
+                    <p class="toc-excerpt">Hướng dẫn sử dụng Python và các thư viện phổ biến trong lĩnh vực khoa học dữ liệu và machine learning.</p>
+                    <div class="toc-meta">
+                        <div class="toc-meta-item">
+                            <i class="far fa-clock"></i>
+                            <span>18 phút đọc</span>
+                        </div>
+                        <div class="toc-meta-item">
+                            <i class="far fa-calendar"></i>
+                            <span>12/08/2023</span>
+                        </div>
+                        <div class="toc-meta-item">
+                            <i class="far fa-eye"></i>
+                            <span>2.9K lượt xem</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="toc-image">
+                    <i class="fab fa-python"></i>
+                </div>
+            </li>
+            
+            <li class="toc-item">
+                <div class="toc-content">
+                    <a href="#" class="toc-link">
+                        Tối ưu hiệu suất Website
+                        <span class="toc-badge badge-trending">XU HƯỚNG</span>
+                    </a>
+                    <p class="toc-excerpt">Các kỹ thuật và công cụ giúp cải thiện tốc độ tải trang và nâng cao trải nghiệm người dùng.</p>
+                    <div class="toc-meta">
+                        <div class="toc-meta-item">
+                            <i class="far fa-clock"></i>
+                            <span>14 phút đọc</span>
+                        </div>
+                        <div class="toc-meta-item">
+                            <i class="far fa-calendar"></i>
+                            <span>10/08/2023</span>
+                        </div>
+                        <div class="toc-meta-item">
+                            <i class="far fa-eye"></i>
+                            <span>4.1K lượt xem</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="toc-image">
+                    <i class="fas fa-tachometer-alt"></i>
+                </div>
+            </li>
+        </ul>
+        
+        <div class="footer">
+            <p>© 2023 TechBlog. Tất cả các quyền được bảo lưu.</p>
+        </div>
+    </div>
+
+    <script>
+        // Hiệu ứng khi di chuột vào các mục
+        document.querySelectorAll('.toc-item').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.style.transform = 'translateY(-8px) scale(1.02)';
+                item.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.4)';
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'translateY(0) scale(1)';
+                item.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.3)';
+            });
+            
+            // Hiệu ứng click
+            item.addEventListener('click', (e) => {
+                if (e.target.tagName !== 'A') {
+                    const link = item.querySelector('.toc-link');
+                    window.location.href = link.href;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

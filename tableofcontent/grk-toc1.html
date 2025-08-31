@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>My Blog Journey</title>
+    <style>
+        .toc {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 300px;
+            margin: 20px auto;
+            font-family: Arial, sans-serif;
+        }
+
+        .toc h3 {
+            margin-top: 0;
+            color: #333;
+            font-size: 1.5em;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+        }
+
+        .toc ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .toc ul li {
+            margin: 10px 0;
+        }
+
+        .toc ul li a {
+            text-decoration: none;
+            color: #007bff;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+
+        .toc ul li a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
+        .toc ul ul {
+            padding-left: 20px;
+        }
+
+        .toc ul ul li a {
+            font-size: 1em;
+            color: #555;
+        }
+
+        .toc ul ul li a:hover {
+            color: #333;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0 auto;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="toc">
+        <h3>Table of Contents</h3>
+        <ul>
+            <li><a href="#year-2025">2025</a>
+                <ul>
+                    <li><a href="#jan-2025">January</a></li>
+                </ul>
+            </li>
+            <li><a href="#year-2026">2026</a>
+                <ul>
+                    <li><a href="#jan-2026">January</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <h1>My Blog Journey</h1>
+
+    <h2 id="year-2025">2025</h2>
+    <div id="jan-2025">January: Updated content</div>
+
+    <h2 id="year-2026">2026</h2>
+    <div id="jan-2026">January: Updated content</div>
+
+    <script>
+        document.querySelectorAll('.toc a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
