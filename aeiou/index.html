@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <title>Bảng nguyên âm với dấu phụ</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    body { font-family: "Noto Serif", "Segoe UI", "Times New Roman", serif;
+           margin: 2rem; line-height: 1.6; }
+    h1, h2 { margin-top: 2rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; }
+    .card { padding: 1rem; border: 1px solid #ddd; border-radius: 12px; }
+    .big { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    code { background: #f6f6f6; padding: 0.2rem 0.4rem; border-radius: 6px; }
+    .muted { font-size: 0.9rem; color: #555; }
+  </style>
+</head>
+<body>
+  <h1>Bảng nguyên âm a, e, i, o, u với các dấu phụ</h1>
+
+  <h2>1. Dấu móc phải (◌̛ – U+031B)</h2>
+  <div class="grid">
+    <div class="card"><div class="big">a̛</div><code>a&#x031B;</code></div>
+    <div class="card"><div class="big">e̛</div><code>e&#x031B;</code></div>
+    <div class="card"><div class="big">i̛</div><code>i&#x031B;</code></div>
+    <div class="card"><div class="big">ơ</div><code>o&#x031B;</code></div>
+    <div class="card"><div class="big">ư</div><code>u&#x031B;</code></div>
+  </div>
+
+  <h2>2. Dấu gạch ngang trên đầu (◌̄ – U+0304, Macron)</h2>
+  <div class="grid">
+    <div class="card"><div class="big">ā</div><code>a&#x0304;</code></div>
+    <div class="card"><div class="big">ē</div><code>e&#x0304;</code></div>
+    <div class="card"><div class="big">ī</div><code>i&#x0304;</code></div>
+    <div class="card"><div class="big">ō</div><code>o&#x0304;</code></div>
+    <div class="card"><div class="big">ū</div><code>u&#x0304;</code></div>
+  </div>
+
+  <h2>3. Dấu hai chấm trên đầu (◌̈ – U+0308, Diaeresis)</h2>
+  <div class="grid">
+    <div class="card"><div class="big">ä</div><code>a&#x0308;</code></div>
+    <div class="card"><div class="big">ë</div><code>e&#x0308;</code></div>
+    <div class="card"><div class="big">ï</div><code>i&#x0308;</code></div>
+    <div class="card"><div class="big">ö</div><code>o&#x0308;</code></div>
+    <div class="card"><div class="big">ü</div><code>u&#x0308;</code></div>
+  </div>
+
+  <h2>4. Dấu mũ (◌̂ – U+0302, Circumflex)</h2>
+  <div class="grid">
+    <div class="card"><div class="big">â</div><code>&#x00E2;</code> hoặc <code>a&#x0302;</code></div>
+    <div class="card"><div class="big">ê</div><code>&#x00EA;</code> hoặc <code>e&#x0302;</code></div>
+    <div class="card"><div class="big">î</div><code>i&#x0302;</code></div>
+    <div class="card"><div class="big">ô</div><code>&#x00F4;</code> hoặc <code>o&#x0302;</code></div>
+    <div class="card"><div class="big">û</div><code>&#x00FB;</code> hoặc <code>u&#x0302;</code></div>
+  </div>
+
+    <h2>Copy nhanh</h2>
+    
+    <p>
+    Móc: <code>a̛ e̛ i̛ ơ ư</code> | <code>A̛ E̛ I̛ Ơ Ư</code><br>
+    Macron: <code>ā ē ī ō ū</code> | <code>Ā Ē Ī Ō Ū</code><br>
+    Umlaut: <code>ä ë ï ö ü</code> | <code>Ä Ë Ï Ö Ü</code><br>
+    Mũ: <code>â ê î ô û</code> | <code>Â Ê Î Ô Û</code>
+    </p>
+
+</body>
+</html>
