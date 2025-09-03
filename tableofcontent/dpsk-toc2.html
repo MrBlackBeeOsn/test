@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mục Lục Blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+        
+        body {
+            background-color: #f9fafb;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .blog-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+        }
+        
+        .blog-title {
+            font-size: 2.5rem;
+            color: #2d3748;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .blog-subtitle {
+            font-size: 1.1rem;
+            color: #718096;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .toc-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .toc-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .toc-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-left: 12px;
+        }
+        
+        .toc-icon {
+            color: #4a5568;
+            font-size: 24px;
+        }
+        
+        .toc-list {
+            list-style: none;
+        }
+        
+        .toc-item {
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-radius: 10px;
+            background: #f7fafc;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            border-left: 4px solid #d53f8c;
+        }
+        
+        .toc-item:hover {
+            background: #edf2f7;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .toc-number {
+            font-weight: 600;
+            color: #d53f8c;
+            margin-right: 16px;
+            font-size: 1.1rem;
+            min-width: 30px;
+        }
+        
+        .toc-link {
+            text-decoration: none;
+            color: #2d3748;
+            font-weight: 500;
+            font-size: 1.1rem;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .toc-link:hover {
+            color: #d53f8c;
+        }
+        
+        .toc-meta {
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+            color: #718096;
+        }
+        
+        .toc-meta i {
+            margin-right: 5px;
+        }
+        
+        .toc-date {
+            margin-right: 15px;
+        }
+        
+        .toc-excerpt {
+            margin-top: 8px;
+            color: #718096;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            padding-left: 46px;
+        }
+        
+        @media (max-width: 768px) {
+            .blog-title {
+                font-size: 2rem;
+            }
+            
+            .toc-container {
+                padding: 20px;
+            }
+            
+            .toc-meta {
+                display: none;
+            }
+            
+            .toc-excerpt {
+                padding-left: 0;
+            }
+            
+            .toc-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .toc-link {
+                margin-bottom: 8px;
+            }
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #a0aec0;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="blog-header">
+        <h1 class="blog-title">Blog Của Tôi</h1>
+        <p class="blog-subtitle">Nơi chia sẻ những kiến thức và trải nghiệm thú vị</p>
+    </header>
+    
+    <div class="toc-container">
+        <div class="toc-header">
+            <i class="toc-icon fas fa-list"></i>
+            <h2 class="toc-title">Mục Lục Bài Viết</h2>
+        </div>
+        
+        <ul class="toc-list">
+            <li class="toc-item">
+                <span class="toc-number">01</span>
+                <a href="#" class="toc-link">
+                    <span>Hướng dẫn thiết kế web hiện đại với CSS3</span>
+                    <div class="toc-meta">
+                        <span class="toc-date"><i class="far fa-clock"></i> 15/08/2023</span>
+                        <span class="toc-length"><i class="far fa-file-alt"></i> 12 phút đọc</span>
+                    </div>
+                </a>
+                <p class="toc-excerpt">Khám phá các kỹ thuật CSS3 mới nhất để tạo trang web hiện đại, responsive và đẹp mắt.</p>
+            </li>
+            
+            <li class="toc-item">
+                <span class="toc-number">02</span>
+                <a href="#" class="toc-link">
+                    <span>JavaScript ES2022: Những tính năng mới đáng chú ý</span>
+                    <div class="toc-meta">
+                        <span class="toc-date"><i class="far fa-clock"></i> 10/08/2023</span>
+                        <span class="toc-length"><i class="far fa-file-alt"></i> 8 phút đọc</span>
+                    </div>
+                </a>
+                <p class="toc-excerpt">Tìm hiểu các tính năng mới trong ES2022 giúp code JavaScript của bạn hiệu quả hơn.</p>
+            </li>
+            
+            <li class="toc-item">
+                <span class="toc-number">03</span>
+                <a href="#" class="toc-link">
+                    <span>Cách tối ưu hóa hiệu suất website</span>
+                    <div class="toc-meta">
+                        <span class="toc-date"><i class="far fa-clock"></i> 05/08/2023</span>
+                        <span class="toc-length"><i class="far fa-file-alt"></i> 10 phút đọc</span>
+                    </div>
+                </a>
+                <p class="toc-excerpt">Các phương pháp và công cụ giúp cải thiện tốc độ tải trang và trải nghiệm người dùng.</p>
+            </li>
+            
+            <li class="toc-item">
+                <span class="toc-number">04</span>
+                <a href="#" class="toc-link">
+                    <span>Thiết kế UX/UI cho người mới bắt đầu</span>
+                    <div class="toc-meta">
+                        <span class="toc-date"><i class="far fa-clock"></i> 01/08/2023</span>
+                        <span class="toc-length"><i class="far fa-file-alt"></i> 15 phút đọc</span>
+                    </div>
+                </a>
+                <p class="toc-excerpt">Những nguyên tắc cơ bản về thiết kế trải nghiệm người dùng và giao diện người dùng.</p>
+            </li>
+            
+            <li class="toc-item">
+                <span class="toc-number">05</span>
+                <a href="#" class="toc-link">
+                    <span>Xây dựng thương hiệu cá nhân trong ngành công nghệ</span>
+                    <div class="toc-meta">
+                        <span class="toc-date"><i class="far fa-clock"></i> 28/07/2023</span>
+                        <span class="toc-length"><i class="far fa-file-alt"></i> 9 phút đọc</span>
+                    </div>
+                </a>
+                <p class="toc-excerpt">Chiến lược xây dựng và phát triển thương hiệu cá nhân cho developer và designer.</p>
+            </li>
+        </ul>
+    </div>
+    
+    <footer class="footer">
+        <p>© 2023 Blog Của Tôi. Tất cả các quyền được bảo lưu.</p>
+    </footer>
+
+    <script>
+        // Hiệu ứng hover cho các mục
+        document.querySelectorAll('.toc-item').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.style.transform = 'translateY(-4px)';
+                item.style.boxShadow = '0 6px 16px rgba(0, 0, 0, 0.08)';
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'translateY(0)';
+                item.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.05)';
+            });
+        });
+    </script>
+</body>
+</html>

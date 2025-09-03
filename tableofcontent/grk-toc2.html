@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>My Blog Journey</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #1a1a1a;
+            background-color: #f9fafb;
+        }
+
+        h1, h2 {
+            color: #1a1a1a;
+        }
+
+        .toc {
+            position: sticky;
+            top: 20px;
+            background: linear-gradient(135deg, #ffffff, #e2e8f0);
+            padding: 20px;
+            border-radius: 12px;
+            max-width: 280px;
+            margin: 20px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .toc:hover {
+            transform: translateY(-5px);
+        }
+
+        .toc h3 {
+            margin: 0 0 15px;
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #1e3a8a;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 8px;
+        }
+
+        .toc ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .toc ul li {
+            margin: 10px 0;
+        }
+
+        .toc ul li a {
+            text-decoration: none;
+            color: #3b82f6;
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .toc ul li a:hover {
+            color: #1e40af;
+            transform: translateX(8px);
+        }
+
+        .toc ul ul {
+            padding-left: 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .toc ul li.active ul {
+            max-height: 200px;
+        }
+
+        .toc ul ul li a {
+            font-size: 0.95em;
+            color: #6b7280;
+        }
+
+        .toc ul ul li a:hover {
+            color: #1e40af;
+        }
+
+        .toc ul li > a::before {
+            content: '▶';
+            margin-right: 8px;
+            font-size: 0.8em;
+            transition: transform 0.3s ease;
+        }
+
+        .toc ul li.active > a::before {
+            transform: rotate(90deg);
+        }
+
+        .toc-toggle {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="toc">
+        <h3>Table of Contents</h3>
+        <ul>
+            <li><a href="#year-2025" class="toc-toggle">2025</a>
+                <ul>
+                    <li><a href="#jan-2025">January</a></li>
+                </ul>
+            </li>
+            <li><a href="#year-2026" class="toc-toggle">2026</a>
+                <ul>
+                    <li><a href="#jan-2026">January</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <h1>My Blog Journey</h1>
+
+    <h2 id="year-2025">2025</h2>
+    <div id="jan-2025">January: Updated content</div>
+
+    <h2 id="year-2026">2026</h2>
+    <div id="jan-2026">January: Updated content</div>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('.toc a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Toggle sub-menu
+        document.querySelectorAll('.toc-toggle').forEach(toggle => {
+            toggle.addEventListener('click', function () {
+                const parentLi = this.parentElement;
+                parentLi.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

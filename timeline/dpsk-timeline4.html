@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog Timeline</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        .year {
+            color: #e74c3c;
+            border-bottom: 1px solid #ecf0f1;
+            padding-bottom: 0.5rem;
+            margin-top: 1.5rem;
+            cursor: pointer; /* Biến con trỏ thành bàn tay khi di chuyển vào tiêu đề năm */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .year::after {
+            content: "−"; /* Dấu "trừ" (-) thể hiện đang mở rộng */
+            font-size: 1.5rem;
+        }
+        .year.collapsed::after {
+            content: "+"; /* Dấu "cộng" (+) thể hiện đang thu gọn */
+        }
+    </style>
+</head>
+<body>
+    <header class="blog-header">
+        <h1 class="blog-title">My Blog Timeline</h1>
+        <p class="blog-description">A simple log of my thoughts and updates. Click on a year to expand/collapse.</p>
+    </header>
+
+    <main class="timeline">
+        <!-- Năm 2026 -->
+        <h2 class="year" id="2026">2026</h2>
+        <ul class="month-list">
+            <li><span class="month">January:</span> Started learning about AI and its applications.</li>
+        </ul>
+
+        <!-- Năm 2025 -->
+        <h2 class="year" id="2025">2025</h2>
+        <ul class="month-list">
+            <li><span class="month">January:</span> Launched my personal blog! Welcome everyone!</li>
+        </ul>
+    </main>
+
+    <script>
+        // Lấy tất cả các phần tử có class "year"
+        const yearHeaders = document.querySelectorAll('.year');
+
+        // Gán sự kiện click cho mỗi tiêu đề năm
+        yearHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                // Tìm phần tử <ul> chứa nội dung tháng ngay sau tiêu đề năm
+                const content = header.nextElementSibling;
+
+                // Toggle class 'collapsed' trên tiêu đề năm
+                header.classList.toggle('collapsed');
+
+                // Toggle hiển thị của nội dung
+                if (header.classList.contains('collapsed')) {
+                    content.style.display = 'none';
+                } else {
+                    content.style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

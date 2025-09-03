@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>My Blog Journey</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px 20px 20px 300px;
+            color: #1f2937;
+            background-color: #f9fafb;
+        }
+
+        h1, h2 {
+            color: #111827;
+        }
+
+        .toc {
+            position: sticky;
+            top: 20px;
+            width: 250px;
+            margin-left: -280px;
+            padding: 15px;
+            border-right: 2px solid #e5e7eb;
+        }
+
+        .toc h3 {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .toc h3::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(to right, #3b82f6, #a5b4fc);
+        }
+
+        .toc ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .toc ul li {
+            margin: 10px 0;
+        }
+
+        .toc ul li a {
+            text-decoration: none;
+            color: #4b5563;
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .toc ul li a:hover {
+            color: #3b82f6;
+            transform: scale(1.05);
+        }
+
+        .toc ul li.active > a {
+            color: #3b82f6;
+            font-weight: 500;
+        }
+
+        .toc ul ul {
+            padding-left: 20px;
+        }
+
+        .toc ul ul li a {
+            font-size: 0.95em;
+            color: #6b7280;
+        }
+
+        .toc ul ul li a:hover,
+        .toc ul ul li.active a {
+            color: #3b82f6;
+        }
+
+        .toc ul li a::before {
+            content: '➤';
+            margin-right: 8px;
+            font-size: 0.9em;
+            color: #9ca3af;
+            transition: color 0.3s ease;
+        }
+
+        .toc ul li.active a::before,
+        .toc ul li a:hover::before {
+            color: #3b82f6;
+        }
+
+        .toc ul ul li a::before {
+            content: '•';
+            font-size: 0.8em;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+            }
+            .toc {
+                position: static;
+                width: 100%;
+                margin: 0 0 20px;
+                border-right: none;
+                border-bottom: 2px solid #e5e7eb;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="toc">
+        <h3>Table of Contents</h3>
+        <ul>
+            <li><a href="#year-2025">2025</a>
+                <ul>
+                    <li><a href="#jan-2025">January</a></li>
+                </ Proportion>ul>
+            </li>
+            <li><a href="#year-2026">2026</a>
+                <ul>
+                    <li><a href="#jan-2026">January</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <h1>My Blog Journey</h1>
+
+    <h2 id="year-2025">2025</h2>
+    <div id="jan-2025">January: Updated content</div>
+
+    <h2 id="year-2026">2026</h2>
+    <div id="jan-2026">January: Updated content</div>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('.toc a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Highlight active section
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const id = entry.target.getAttribute('id');
+                const link = document.querySelector(`.toc a[href="#${id}"]`);
+                if (entry.isIntersecting && link) {
+                    document.querySelectorAll('.toc li').forEach(li => li.classList.remove('active'));
+                    link.parentElement.classList.add('active');
+                    if (link.parentElement.parentElement.parentElement.tagName === 'LI') {
+                        link.parentElement.parentElement.parentElement.classList.add('active');
+                    }
+                }
+            });
+        }, { rootMargin: '0px 0px -50% 0px' });
+
+        document.querySelectorAll('[id]').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
