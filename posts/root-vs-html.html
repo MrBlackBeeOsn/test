@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>So sánh html và :root</title>
+    <style>
+        /* Thiết lập ban đầu */
+        :root {
+            font-size: 62.5%; /* 1rem = 10px */
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+        }
+        
+        /* Hoặc có thể dùng:
+        html {
+            font-size: 62.5%;
+        }
+        */
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1.6rem; /* 16px */
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: #f8f9fa;
+        }
+        
+        h1 {
+            font-size: 3.2rem; /* 32px */
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        h2 {
+            font-size: 2.4rem; /* 24px */
+            color: var(--secondary-color);
+            border-bottom: 2px solid #eee;
+            padding-bottom: 0.5rem;
+            margin-top: 3rem;
+        }
+        
+        .container {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .box {
+            flex: 1;
+            min-width: 250px;
+            background: white;
+            border-radius: 0.8rem;
+            padding: 2rem;
+            box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+        }
+        
+        .example {
+            background-color: #eee;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin: 1.5rem 0;
+            font-family: monospace;
+        }
+        
+        .pixel-value {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .rem-value {
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+        
+        .recommendation {
+            background-color: #e3f2fd;
+            border-left: 0.4rem solid var(--primary-color);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0.4rem;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        
+        th, td {
+            padding: 1.2rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .code {
+            font-family: monospace;
+            background: #273746;
+            color: #fff;
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.3rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>So sánh <span class="code">html {font-size: 62.5%;}</span> và <span class="code">:root {font-size: 62.5%;}</span></h1>
+    
+    <div class="recommendation">
+        <h2>Khuyến nghị</h2>
+        <p>Nên sử dụng <span class="code">:root { font-size: 62.5%; }</span> vì:</p>
+        <ul>
+            <li>Độ đặc hiệu cao hơn (0,1,0 so với 0,0,1)</li>
+            <li>Phù hợp hơn khi khai báo biến CSS (custom properties)</li>
+            <li>Ít có khả năng bị ghi đè bởi các quy tắc khác</li>
+        </ul>
+    </div>
+    
+    <h2>Kết quả tính toán</h2>
+    <p>Với font-size mặc định của trình duyệt là 16px:</p>
+    
+    <table>
+        <tr>
+            <th>Giá trị rem</th>
+            <th>Kích thước thực tế (px)</th>
+            <th>Ví dụ trực quan</th>
+        </tr>
+        <tr>
+            <td>1rem</td>
+            <td><span class="pixel-value">10px</span> (62.5% × 16px)</td>
+            <td><div style="font-size: 1rem; background: #e3f2fd; padding: 0.5rem;">Văn bản 1rem</div></td>
+        </tr>
+        <tr>
+            <td>1.6rem</td>
+            <td><span class="pixel-value">16px</span></td>
+            <td><div style="font-size: 1.6rem; background: #e3f2fd; padding: 0.5rem;">Văn bản 1.6rem</div></td>
+        </tr>
+        <tr>
+            <td>2.4rem</td>
+            <td><span class="pixel-value">24px</span></td>
+            <td><div style="font-size: 2.4rem; background: #e3f2fd; padding: 0.5rem;">Văn bản 2.4rem</div></td>
+        </tr>
+    </table>
+    
+    <h2>Ví dụ mã CSS</h2>
+    <div class="container">
+        <div class="box">
+            <h3>Sử dụng :root</h3>
+            <div class="example">
+                :root {<br>
+                &nbsp;&nbsp;font-size: 62.5%; /* 1rem = 10px */<br>
+                &nbsp;&nbsp;--primary-color: #3498db;<br>
+                &nbsp;&nbsp;--secondary-color: #2ecc71;<br>
+                }<br><br>
+                
+                body {<br>
+                &nbsp;&nbsp;font-size: 1.6rem; /* 16px */<br>
+                }<br><br>
+                
+                h1 {<br>
+                &nbsp;&nbsp;font-size: 3.2rem; /* 32px */<br>
+                &nbsp;&nbsp;color: var(--primary-color);<br>
+                }
+            </div>
+        </div>
+        
+        <div class="box">
+            <h3>Sử dụng html</h3>
+            <div class="example">
+                html {<br>
+                &nbsp;&nbsp;font-size: 62.5%; /* 1rem = 10px */<br>
+                }<br><br>
+                
+                body {<br>
+                &nbsp;&nbsp;font-size: 1.6rem; /* 16px */<br>
+                }<br><br>
+                
+                h1 {<br>
+                &nbsp;&nbsp;font-size: 3.2rem; /* 32px */<br>
+                }
+            </div>
+        </div>
+    </div>
+    
+    <h2>Lưu ý quan trọng</h2>
+    <ul>
+        <li>Kỹ thuật này chỉ hoạt động khi font-size mặc định của trình duyệt là 16px</li>
+        <li>Nếu người dùng thay đổi cài đặt font-size mặc định, tỷ lệ sẽ vẫn được duy trì</li>
+        <li>Luôn kiểm tra hiển thị trên nhiều trình duyệt và thiết bị</li>
+    </ul>
+</body>
+</html>
