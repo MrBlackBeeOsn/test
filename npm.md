@@ -5,6 +5,22 @@ cd my-react-app
 npm install
 npm run dev
 
+✅ Cách fix
+
+Đứng trong thư mục project (nơi có package.json):
+
+cd my-react-app
+
+
+Cài react-router-dom:
+
+npm install react-router-dom
+
+
+Sau khi cài xong, chạy lại:
+
+npm run dev
+
 
 npm create vite@latest my-react-app
 
