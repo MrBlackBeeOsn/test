@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <link rel="stylesheet" href="/assets/css/components.css">
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function App() {
+            const [page, setPage] = React.useState('home');
+
+            return (
+            <div>
+                <nav>
+                <button className="button-reset" onClick={() => setPage('index-2')}>Trang chủ</button>
+                <button className="button-reset" onClick={() => setPage('index-1')}>Giới thiệu</button>
+                </nav>
+                <main>
+                {page === 'home' && <h1>Chào Hieu!</h1>}
+                {page === 'about' && <h1>Giới thiệu về Hieu</h1>}
+                </main>
+            </div>
+            );
+        }
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+
+    </script>
+  </body>
+</html>
