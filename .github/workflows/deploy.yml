@@ -1,32 +1,55 @@
-name: Deploy to GitHub Pages
+name: Deploy React App to Subdirectory
 
 on:
   push:
     branches: [main]
+    paths:
+      - 'my-react-app/**'
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
           cache: 'npm'
+          cache-dependency-path: my-react-app/package-lock.json
 
       - name: Install dependencies
-        run: npm install
-        working-directory: ./my-react-app
+        run: npm ci
+        working-directory: my-react-app
 
-      - name: Build
+      - name: Build project
         run: npm run build
-        working-directory: ./my-react-app
+        working-directory: my-react-app
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./my-react-app/dist
+      - name: Configure Git
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+
+      - name: Deploy to subdirectory
+        run: |
+          # Clone gh-pages branch
+          git clone --branch gh-pages https://github.com/${{ github.repository }}.git gh-pages
+
+          # Create target directory if it doesn't exist
+          mkdir -p gh-pages/my-react-app
+
+          # Copy built files to subdirectory
+          cp -r my-react-app/dist/* gh-pages/my-react-app/
+
+          # Commit and push changes
+          cd gh-pages
+          git add .
+          git commit -m "Deploy React app to my-react-app directory"
+          git push origin gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

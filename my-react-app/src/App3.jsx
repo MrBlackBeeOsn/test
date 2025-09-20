@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
+import './index.css'
 
 function Home() {
   return <h1>Trang Home 🏠 - Hieu</h1>
