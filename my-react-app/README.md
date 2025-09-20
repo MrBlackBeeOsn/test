@@ -1,4 +1,5 @@
 cd my-react-app
+cd my-react-app
 npm run dev
 
 cd my-react-app
