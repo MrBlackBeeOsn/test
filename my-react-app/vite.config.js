@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react-swc'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: 'test/my-react-app/', // hoặc '/' nếu bạn dùng tên miền chính
+  base: 'test/', // hoặc '/' nếu bạn dùng tên miền chính
   server: {
     host: true,
     port: 5173

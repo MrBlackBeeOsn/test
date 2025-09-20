@@ -3,14 +3,15 @@ name: Deploy React App to GitHub Pages
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    paths:
+      - 'my-react-app/**'  # Chỉ chạy workflow khi có thay đổi trong thư mục my-react-app
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
+    defaults:
+      run:
+        working-directory: my-react-app  # Chỉ định thư mục làm việc
     
     steps:
     - name: Checkout code
@@ -21,6 +22,7 @@ jobs:
       with:
         node-version: '20'
         cache: 'npm'
+        cache-dependency-path: my-react-app/package-lock.json
     
     - name: Install dependencies
       run: npm ci
@@ -32,4 +34,4 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist
+        publish_dir: my-react-app/dist
