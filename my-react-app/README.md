@@ -1,3 +1,9 @@
+cd my-react-app
+npm run dev
+
+cd my-react-app
+npm run build
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

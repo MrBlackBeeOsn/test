@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
 
-  "homepage": "https://mrblackbeeosn.github.io/test/my-react-app",
+  "homepage": "https://mrblackbeeosn.github.io/test/my-react-app/",
 
   "scripts": {
     "dev": "vite",
