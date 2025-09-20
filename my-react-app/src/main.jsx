@@ -12,6 +12,6 @@ import { BrowserRouter } from 'react-router-dom'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter basename="/test/my-react-app/">
-    <App />
+    <App3 />
   </BrowserRouter>
 )
